@@ -120,6 +120,9 @@ main {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  max-width: 1200px;
+  justify-self: center;
+  width: 100%;
 }
 
 .searchWrapper {
