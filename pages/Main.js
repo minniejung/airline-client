@@ -1,12 +1,14 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getFlight } from "../api/FlightDataApi";
 import FlightList from "./component/FlightList";
 import LoadingIndicator from "./component/LoadingIndicator";
 import Search from "./component/Search";
 import Debug from "./component/Debug";
 
-import json from "../resource/flightList";
+import { FiMenu, FiSun } from "react-icons/fi";
+import { CgMenuGridO } from "react-icons/cg";
+import { TbCircleLetterMFilled } from "react-icons/tb";
 
 export default function Main() {
   const [condition, setCondition] = useState({
@@ -43,20 +45,51 @@ export default function Main() {
       </Head>
 
       <main>
-        <h1>여행가고 싶을 땐, Airline</h1>
-        <Search onSearch={search} />
-        <div className="table">
-          <div className="row-header">
-            <div className="col">출발</div>
-            <div className="col">도착</div>
-            <div className="col">출발 시각</div>
-            <div className="col">도착 시각</div>
-            <div className="col"></div>
+        <div className="header">
+          <div className="headerLeft">
+            <FiMenu />
+            <img
+              src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_light_clr_74x24px.svg"
+              alt="google-logo"
+            />
           </div>
-          {loading ? <LoadingIndicator /> : <FlightList list={flightList} />}
+          <div className="headerRight">
+            <FiSun />
+            <CgMenuGridO />
+            <TbCircleLetterMFilled />
+          </div>
         </div>
-        <div className="debug-area">
-          <Debug condition={condition} />
+
+        <div className="container">
+          <div className="banner">
+            <img
+              src="https://www.gstatic.com/travel-frontend/animation/hero/flights_nc_dark_theme_4.svg"
+              alt="google-flight-banner"
+            />
+            <p>Flights</p>
+          </div>
+
+          <div className="content">
+            <Search onSearch={search} />
+            <div className="table">
+              <div className="row-header">
+                <div className="col">출발</div>
+                <div className="col">도착</div>
+                <div className="col">출발 시각</div>
+                <div className="col">도착 시각</div>
+                <div className="col"></div>
+              </div>
+
+              {loading ? (
+                <LoadingIndicator />
+              ) : (
+                <FlightList list={flightList} />
+              )}
+            </div>
+            <div className="debug-area">
+              <Debug condition={condition} />
+            </div>
+          </div>
         </div>
       </main>
     </div>

@@ -90,9 +90,9 @@ describe('💡 Part 1: 항공권 목록 필터링', () => {
 
 describe('💡 Part 2: AJAX 요청', () => {
   describe('🧩 Side Effect는 useEffect에서 다뤄야 합니다', () => {
-    // afterEach(() => {
-    //   cleanup();
-    // });
+    afterEach(() => {
+      cleanup();
+    });
 
     test('검색 조건이 바뀔 때마다, FlightDataApi의 getFlight를 검색 조건과 함께 요청해야 합니다', async () => {
       const getFlightSpy = jest.spyOn(Api, 'getFlight').mockResolvedValue([]);
